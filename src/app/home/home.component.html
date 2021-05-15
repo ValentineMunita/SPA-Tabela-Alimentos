@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SPA com Angular</title>
+</head>
+
+<body>
+
+  <mat-toolbar>
+    <span> SPA - ANGULAR</span>
+    <span class="example-spacer"></span>
+    <span> by Valentine Munita</span>
+  </mat-toolbar>
+ 
+  <div>
+        
+    <spa-alimentos [tabOn]="status"></spa-alimentos>
+    
+    
+  </div>  
+  <div>
+    <button class="botao" mat-raised-button color="primary" (click)="exibirTabela()">Exibir Tabela</button>
+    <button class="botao" mat-raised-button color="accent" (click)="ocultarTabela()">Ocultar Tabela</button>
+  </div>
+  <table *ngIf="exibeTabela" matSort (matSortChange)="sortData($event)">
+    <tr>
+      <th mat-sort-header="codigo">Código</th>
+      <th mat-sort-header="nome">Nome</th>
+      <th mat-sort-header="valor">Valor</th>
+    </tr>
+  
+    <tr *ngFor="let dessert of sortedData">
+      <td>{{dessert.codigo}}</td>
+      <td>{{dessert.nome}}</td>
+      <td>{{dessert.valor}}</td>      
+    </tr>
+  </table>
+
+  <div>
+        
+    <spa-nutricional [tabOn2]="status2"></spa-nutricional>
+    
+    
+  </div>  
+  <div>
+    <button class="botao" mat-raised-button color="primary" (click)="exibirTabela2()">Exibir Tabela</button>
+    <button class="botao" mat-raised-button color="accent" (click)="ocultarTabela2()">Ocultar Tabela</button>
+  </div>
+  <table *ngIf="exibeTabela2" matSort (matSortChange)="sortData($event)">
+    <tr>
+      <th mat-sort-header="nome">Nome</th>
+      <th mat-sort-header="nutricional">Valor Calórico (kcal)</th>
+      <th mat-sort-header="vd">Valores Diários (%)</th>
+    </tr>
+  
+    <tr *ngFor="let dessert2 of sortedData2">
+      <td>{{dessert2.nome}}</td>
+      <td>{{dessert2.nutricional}}</td>
+      <td>{{dessert2.vd}}</td>      
+    </tr>
+  </table>
+</body>
+
+</html>
